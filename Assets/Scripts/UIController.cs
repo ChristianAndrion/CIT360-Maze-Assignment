@@ -1,16 +1,34 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private TMP_InputField widthEntry;
+    [SerializeField] private TMP_InputField heightEntry;
+    [SerializeField] private MazeGenerator mg;
+    public void OnGenerateNewMazeClicked()
     {
-        
-    }
+        int newWidth;
+        int newHeight;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (int.TryParse(widthEntry.text, out int result))
+        {
+            newWidth = result;
+        }
+        else { 
+            newWidth = 0;
+        }
+
+        if (int.TryParse(heightEntry.text,out result))
+        {
+            newHeight = result;
+        }
+        else
+        {
+            newHeight = 0;
+        }
+
+        mg.GenerateMaze(newWidth, newHeight);
     }
 }

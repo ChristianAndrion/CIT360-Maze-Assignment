@@ -22,6 +22,13 @@ public class MazeGenerator : MonoBehaviour
 
     public void GenerateMaze(int Width, int Height)
     {
+        if(mazeGrid != null)
+        {
+            for (int i = transform.childCount - 1; i >= 0; i--)
+            {
+                Destroy(transform.GetChild(i).gameObject);
+            }
+        }
         CreateGrid(Width, Height);
         CreateOuterWalls();
         GenerateObstacles(Width, Height);
