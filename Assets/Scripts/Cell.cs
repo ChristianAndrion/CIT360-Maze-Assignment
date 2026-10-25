@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Cell : MonoBehaviour
 {
-    [SerializeField] private Sprite _wallSprite;
+    [SerializeField] private Sprite[] _wallSprites;
     private SpriteRenderer spriteRenderer;
 
     public int row;
@@ -22,7 +22,8 @@ public class Cell : MonoBehaviour
     {
         if (isWall)
         {
-            spriteRenderer.sprite = _wallSprite;
+            int randomRock = Random.Range(0, 2);
+            spriteRenderer.sprite = _wallSprites[randomRock];
         }
     }
 }

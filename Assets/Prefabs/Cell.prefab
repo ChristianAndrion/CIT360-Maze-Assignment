@@ -104,7 +104,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fb9f7aa2d63920448752b29dff97712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cell
-  _wallSprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  _wallSprites:
+  - {fileID: 6529909481953654932, guid: dd0390e7f40bca5408d4d5e600cc7ad2, type: 3}
+  - {fileID: -5937200866895562579, guid: 2293b7f9dfbcbc84686bfb93d2289361, type: 3}
+  - {fileID: 1806762593315652507, guid: 88527776705c47846ad9e655982e03fd, type: 3}
   row: 0
   column: 0
   isWall: 0

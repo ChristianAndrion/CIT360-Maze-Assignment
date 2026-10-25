@@ -285,10 +285,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28960b1a05c01c3498335b83870453ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MazeGenerator
-  Cell: {fileID: 306061233341706890, guid: ec2d855002c810244898362cd48678be, type: 3}
+  Cell: {fileID: 3489417067829023975, guid: ec2d855002c810244898362cd48678be, type: 3}
   cellSize: 1.1
-  mazeWidth: 6
-  mazeHeight: 6
+  mazeWidth: 2
+  mazeHeight: 2
 --- !u!4 &2023481186
 Transform:
   m_ObjectHideFlags: 0
