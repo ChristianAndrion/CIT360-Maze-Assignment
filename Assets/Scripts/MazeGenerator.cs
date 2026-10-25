@@ -3,6 +3,7 @@ using UnityEngine;
 public class MazeGenerator : MonoBehaviour
 {
     [SerializeField] private Cell Cell;
+    [SerializeField] private MazeCamera MainCamera;
     public float cellSize = 1.1f;
 
     public int mazeWidth;
@@ -23,6 +24,7 @@ public class MazeGenerator : MonoBehaviour
     {
         CreateGrid(Width, Height);
         CreateOuterWalls();
+        GenerateObstacles(Width, Height);
     }
     
     private void CreateGrid(int Width, int Height)
@@ -49,6 +51,8 @@ public class MazeGenerator : MonoBehaviour
                 mazeGrid[x,y] = newCell;
             }
         }
+
+        MainCamera.ReAdjustCamera(mazeGrid[0, 0].transform.position, mazeGrid[gridWidth - 1, gridHeight - 1].transform.position);
     }
 
     private void CreateOuterWalls()
@@ -70,5 +74,21 @@ public class MazeGenerator : MonoBehaviour
 
     }
 
+    private void GenerateObstacles(int Width, int Height)
+    {
+        //Start at 1 to avoid the outer wall
+        for (int x = 1; x < Width; x++)
+        {
+            for(int y = 1; y <  Height; y++)
+            {
+                float randomRock = Random.Range(0, 1.0f);
+                if (randomRock > 0.5f)
+                {
+                    mazeGrid[x, y].isWall = true;
+                }
+                
+            }
+        }
+    }
 }
 
