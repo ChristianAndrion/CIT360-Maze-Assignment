@@ -32,6 +32,7 @@ public class MazeGenerator : MonoBehaviour
         CreateGrid(Width, Height);
         CreateOuterWalls();
         GenerateObstacles(Width, Height);
+        ChooseRandomStartAndFinish(Width, Height);
     }
     
     private void CreateGrid(int Width, int Height)
@@ -96,6 +97,45 @@ public class MazeGenerator : MonoBehaviour
                 
             }
         }
+    }
+
+    private void ChooseRandomStartAndFinish(int Width, int Height)
+    {
+        bool validStart = false;
+
+        while (!validStart)
+        {
+            int randStartX = Random.Range(1, Width);
+            int randStartY = Random.Range(1, Height);
+
+            if (mazeGrid[randStartX, randStartY].isWall)
+            {
+                validStart = false;
+            }
+            else
+            { 
+                mazeGrid[randStartX,randStartY].isStart = true;
+                validStart = true;
+            }
+        }
+
+        bool validEnd = false;
+        while (!validEnd)
+        {
+            int randEndX = Random.Range(1, Width);
+            int randEndY = Random.Range(1, Height);
+
+            if (mazeGrid[randEndX, randEndY].isWall || mazeGrid[randEndX,randEndY].isStart)
+            {
+                validEnd = false;
+            }
+            else
+            {
+                mazeGrid[randEndX,randEndY].isEnd = true;
+                validEnd = true;
+            }
+        }
+
     }
 }
 

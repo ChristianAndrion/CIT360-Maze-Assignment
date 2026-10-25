@@ -7,6 +7,14 @@ public class UIController : MonoBehaviour
     [SerializeField] private TMP_InputField widthEntry;
     [SerializeField] private TMP_InputField heightEntry;
     [SerializeField] private MazeGenerator mg;
+
+    private void Start()
+    {
+        widthEntry.text = (mg.mazeWidth).ToString();
+        heightEntry.text = (mg.mazeHeight).ToString();  
+        
+    }
+
     public void OnGenerateNewMazeClicked()
     {
         int newWidth;
