@@ -25,6 +25,7 @@ public class Cell : MonoBehaviour
     {
         if (isWall)
         {
+            //Randomize Rock sprite 
             int randomRock = Random.Range(0, 2);
             wallSprite.gameObject.GetComponent<SpriteRenderer>().sprite = _wallSprites[randomRock];
             wallSprite.SetActive(true);

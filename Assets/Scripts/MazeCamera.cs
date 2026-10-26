@@ -10,6 +10,8 @@ public class MazeCamera : MonoBehaviour
     {
         MainCamera = GetComponent<Camera>();
     }
+
+    //Readjust camera based on the corners of the generated maze
     public void ReAdjustCamera(Vector2 corner1, Vector2 corner2)
     {
         float distanceX = Mathf.Abs(corner1.x - corner2.x);

@@ -16,12 +16,13 @@ public class MazeGenerator : MonoBehaviour
 
     private void Start()
     {
-        //Temp to test generation
+        //Generate initial maze based of mazeWidth and mazeHeight set in editor
         GenerateMaze(mazeWidth, mazeHeight);
     }
 
     public void GenerateMaze(int Width, int Height)
     {
+        //Checks if there is a maze then deletes it
         if(mazeGrid != null)
         {
             for (int i = transform.childCount - 1; i >= 0; i--)
@@ -37,11 +38,13 @@ public class MazeGenerator : MonoBehaviour
     
     private void CreateGrid(int Width, int Height)
     {
+        //+2 to account for the outer wall
         gridWidth = Width + 2;
         gridHeight = Height + 2;
 
         mazeGrid = new Cell[gridWidth,gridHeight];
 
+        //Offset maze so its center is the game object the script is on
         float xOffset = ((gridWidth - 1) * cellSize) / 2f;
         float yOffset = ((gridHeight - 1) * cellSize) / 2f;
 
@@ -59,7 +62,9 @@ public class MazeGenerator : MonoBehaviour
                 mazeGrid[x,y] = newCell;
             }
         }
-
+        
+        //Dynamically adjust the camera after a maze is generated
+        //Refer to MazeCamera.cs
         MainCamera.ReAdjustCamera(mazeGrid[0, 0].transform.position, mazeGrid[gridWidth - 1, gridHeight - 1].transform.position);
     }
 
@@ -89,6 +94,7 @@ public class MazeGenerator : MonoBehaviour
         {
             for(int y = 1; y <  Height; y++)
             {
+                //50% chance to generate a rock obstacle 
                 float randomRock = Random.Range(0, 1.0f);
                 if (randomRock > 0.5f)
                 {
