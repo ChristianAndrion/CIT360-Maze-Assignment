@@ -18,7 +18,7 @@ public class Cell : MonoBehaviour
     public bool isStart;
     public bool isEnd;
 
-    int distance;
+    public int distance;
 
 
     private void Start()

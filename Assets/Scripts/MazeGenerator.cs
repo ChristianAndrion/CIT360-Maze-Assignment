@@ -62,6 +62,9 @@ public class MazeGenerator : MonoBehaviour
                 newCell.transform.parent = this.transform;
                 newCell.name = $"Cell_{x}_{y}";
 
+                newCell.row = x;
+                newCell.column = y;
+
                 mazeGrid[x,y] = newCell;
             }
         }
@@ -146,7 +149,11 @@ public class MazeGenerator : MonoBehaviour
                 validEnd = true;
             }
         }
+    }
 
+    public Cell getLocation(Vector2 locationVector)
+    {
+        return mazeGrid[(int)locationVector.x,(int)locationVector.y];
     }
 }
 
