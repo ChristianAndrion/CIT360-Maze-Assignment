@@ -9,6 +9,9 @@ public class MazeGenerator : MonoBehaviour
     public int mazeWidth;
     public int mazeHeight;
 
+    public Vector2 startLocation;
+    public Vector2 endLocation;
+
     private int gridWidth;
     private int gridHeight;
 
@@ -121,6 +124,7 @@ public class MazeGenerator : MonoBehaviour
             else
             { 
                 mazeGrid[randStartX,randStartY].isStart = true;
+                startLocation = new Vector2(randStartX, randStartY);
                 validStart = true;
             }
         }
@@ -138,6 +142,7 @@ public class MazeGenerator : MonoBehaviour
             else
             {
                 mazeGrid[randEndX,randEndY].isEnd = true;
+                endLocation = new Vector2(randEndX, randEndY);
                 validEnd = true;
             }
         }

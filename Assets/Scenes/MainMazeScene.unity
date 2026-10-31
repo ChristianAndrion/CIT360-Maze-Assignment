@@ -2506,9 +2506,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MazeGenerator
   Cell: {fileID: 3489417067829023975, guid: ec2d855002c810244898362cd48678be, type: 3}
   MainCamera: {fileID: 1547106752}
-  cellSize: 1.1
+  cellSize: 1
   mazeWidth: 10
-  mazeHeight: 20
+  mazeHeight: 10
 --- !u!4 &2023481186
 Transform:
   m_ObjectHideFlags: 0
