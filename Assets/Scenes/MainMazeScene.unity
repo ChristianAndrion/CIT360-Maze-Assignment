@@ -2509,6 +2509,8 @@ MonoBehaviour:
   cellSize: 1
   mazeWidth: 10
   mazeHeight: 10
+  startLocation: {x: 0, y: 0}
+  endLocation: {x: 0, y: 0}
 --- !u!4 &2023481186
 Transform:
   m_ObjectHideFlags: 0
