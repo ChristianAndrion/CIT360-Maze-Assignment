@@ -8,10 +8,18 @@ public class UIController : MonoBehaviour
     [SerializeField] private TMP_InputField heightEntry;
     [SerializeField] private MazeGenerator mg;
 
+    public GameObject sideBar;
+    public GameObject bottomBar;
+    public GameObject startButton;
+    public GameObject generator;
+
+
     private void Start()
     {
         widthEntry.text = (mg.mazeWidth).ToString();
-        heightEntry.text = (mg.mazeHeight).ToString();  
+        heightEntry.text = (mg.mazeHeight).ToString();
+
+        bottomBar.SetActive(false);
         
     }
 
@@ -38,5 +46,21 @@ public class UIController : MonoBehaviour
         }
 
         mg.GenerateMaze(newWidth, newHeight);
+    }
+
+    public void StartButton()
+    {
+        sideBar.SetActive(false);
+        bottomBar.SetActive(true);
+        startButton.SetActive(false);
+        generator.SetActive(false);
+    }
+
+    public void Reset()
+    {
+        sideBar.SetActive(true);
+        bottomBar.SetActive(false);
+        startButton.SetActive(true);
+        generator.SetActive(true);
     }
 }
