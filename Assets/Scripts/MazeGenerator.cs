@@ -4,6 +4,7 @@ public class MazeGenerator : MonoBehaviour
 {
     [SerializeField] private Cell Cell;
     [SerializeField] private MazeCamera MainCamera;
+    [SerializeField] private GameObject robot;
     public float cellSize = 1.1f;
 
     public int mazeWidth;
@@ -128,6 +129,7 @@ public class MazeGenerator : MonoBehaviour
             { 
                 mazeGrid[randStartX,randStartY].isStart = true;
                 startLocation = new Vector2(randStartX, randStartY);
+                robot.gameObject.transform.position = mazeGrid[randStartX, randStartY].transform.position;
                 validStart = true;
             }
         }
