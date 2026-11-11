@@ -1,26 +1,30 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 
 public class StackDFS : BaseTraversal
 {
-    Stack stack;
-    protected override void startTraversal()
+    [SerializeField] private Stack stack;
+
+    public override void startTraversal()
     {
         base.startTraversal();
+        robot = gameObject;
         //Create new stack and push starting location
-        stack = new Stack(mg.mazeWidth * mg.mazeHeight);
-        stack.push(mg.getLocation(mg.startLocation));
+        stack = new Stack(MazeGenerator.mazeWidth * MazeGenerator.mazeHeight);
+        stack.push(MazeGenerator.getLocation((int)MazeGenerator.startLocation.x,(int)MazeGenerator.startLocation.y));
     }
 
-    public override bool incrementTraversal()
+    public override bool traversalStep()
     {
 
         if(!stack.isEmpty())
         {
             Cell curr = stack.pop();
+            moveRobot(curr.gameObject.transform.position);
             curr.visited = true;
 
-            if(curr == mg.getLocation(mg.endLocation))
+            if(curr == MazeGenerator.getLocation((int)MazeGenerator.endLocation.x,(int)MazeGenerator.endLocation.y))
             {
                 isRunning = false;
                 backtrack();
@@ -29,7 +33,7 @@ public class StackDFS : BaseTraversal
 
             distance++;
 
-            Cell north = mg.getLocation(new Vector2(curr.row, curr.column + 1));
+            Cell north = MazeGenerator.getLocation(curr.row, curr.column + 1);
 
             if(!north.isWall && !north.visited)
             {
@@ -37,7 +41,7 @@ public class StackDFS : BaseTraversal
                 north.distance = distance;
             }
 
-            Cell east = mg.getLocation(new Vector2(curr.row + 1, curr.column));
+            Cell east = MazeGenerator.getLocation(curr.row + 1, curr.column);
 
             if(!east.isWall && !east.visited)
             {
@@ -45,7 +49,7 @@ public class StackDFS : BaseTraversal
                 east.distance = distance;
             }
 
-            Cell south = mg.getLocation(new Vector2(curr.row, curr.column - 1));
+            Cell south = MazeGenerator.getLocation(curr.row, curr.column - 1);
 
             if(!south.isWall && !south.visited)
             {
@@ -53,7 +57,7 @@ public class StackDFS : BaseTraversal
                 south.distance = distance;
             }
 
-            Cell west = mg.getLocation(new Vector2(curr.row - 1,curr.column));
+            Cell west = MazeGenerator.getLocation(curr.row - 1,curr.column);
 
             if(!west.isWall && !west.visited)
             {
@@ -61,18 +65,32 @@ public class StackDFS : BaseTraversal
                 west.distance = distance;
             }
 
+
             return isRunning;
         }
+        //Unsolvable
         isRunning = false;
         return isRunning;
     }
 
+    public override void incrementTraversal()
+    {
+        if(traversalStep())
+        {
+            Debug.Log("Incrementing Stack DFS Traversal");
+        }
+    }
+
     public override void completeTraversal()
     {
-        while (incrementTraversal())
+        while (traversalStep())
         {
             Debug.Log("Traversing Maze");
         }
         Debug.Log("Maze Traversal Finished");
     }
+
+    
+
+}
 }

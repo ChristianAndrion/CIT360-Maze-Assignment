@@ -10,8 +10,8 @@ public class UIController : MonoBehaviour
 
     private void Start()
     {
-        widthEntry.text = (mg.mazeWidth).ToString();
-        heightEntry.text = (mg.mazeHeight).ToString();  
+        widthEntry.text = (MazeGenerator.mazeWidth).ToString();
+        heightEntry.text = (MazeGenerator.mazeHeight).ToString();  
         
     }
 
@@ -39,4 +39,6 @@ public class UIController : MonoBehaviour
 
         mg.GenerateMaze(newWidth, newHeight);
     }
+
+    
 }
