@@ -10,13 +10,20 @@ public class UIController : MonoBehaviour
     [SerializeField] private MazeGenerator mg;
     [SerializeField] private GameObject robot;
 
+    [Header("Panels")]
     [SerializeField] private GameObject sideBar;
-
-    public Toggle stackDFSToggle;
     [SerializeField] private GameObject bottomBar;
-    [SerializeField] private GameObject startButton;
     [SerializeField] private GameObject generator;
 
+    [Header("Traversal Toggles")]
+    public Toggle stackDFSToggle;
+
+    [Header("Buttons")]
+    [SerializeField] private GameObject startButton;
+    [SerializeField] private GameObject completeButton;
+    [SerializeField] private GameObject incrementButton;
+
+    [Header("Traversal Objects")]
     [SerializeField] private StackDFS stackDFS;
     private bool stackDFSActive;
 
@@ -24,6 +31,7 @@ public class UIController : MonoBehaviour
     {
         //Unity subscribing 
         stackDFSToggle.onValueChanged.AddListener(OnStackDFSToggle);
+        completeButton.GetComponent<Button>().onClick.AddListener(OnCompleteClicked);
     }
 
     private void Start()
@@ -82,6 +90,14 @@ public class UIController : MonoBehaviour
         bottomBar.SetActive(false);
         startButton.SetActive(true);
         generator.SetActive(true);
+        completeButton.SetActive(true);
+        incrementButton.SetActive(true);
+    }
+
+    private void OnCompleteClicked()
+    {
+        completeButton.SetActive(false);
+        incrementButton.SetActive(false);
     }
 
     public void OnStackDFSToggle(bool active)
