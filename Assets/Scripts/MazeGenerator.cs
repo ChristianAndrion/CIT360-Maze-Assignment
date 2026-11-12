@@ -7,16 +7,16 @@ public class MazeGenerator : MonoBehaviour
     [SerializeField] private GameObject robot;
     public float cellSize = 1.1f;
 
-    public static int mazeWidth = 10;
-    public static int mazeHeight = 10;
+    public int mazeWidth = 10;
+    public int mazeHeight = 10;
 
-    public static Vector2 startLocation;
-    public static Vector2 endLocation;
+    public Vector2 startLocation;
+    public Vector2 endLocation;
 
     private int gridWidth;
     private int gridHeight;
 
-    private static Cell[,] mazeGrid;
+    private Cell[,] mazeGrid;
 
     private void Start()
     {
@@ -129,7 +129,7 @@ public class MazeGenerator : MonoBehaviour
             { 
                 mazeGrid[randStartX,randStartY].isStart = true;
                 startLocation = new Vector2(randStartX, randStartY);
-                robot.gameObject.transform.position = mazeGrid[randStartX, randStartY].transform.position;
+                UpdateRobotPosition(randStartX,randStartY);
                 validStart = true;
             }
         }
@@ -153,9 +153,14 @@ public class MazeGenerator : MonoBehaviour
         }
     }
 
-    public static Cell getLocation(int locationVectorX, int locationVectorY)
+    public Cell getLocation(int locationVectorX, int locationVectorY)
     {
         return mazeGrid[locationVectorX,locationVectorY];
+    }
+
+    public void UpdateRobotPosition(int x, int y)
+    {
+        robot.transform.position = mazeGrid[x, y].transform.position;
     }
 }
 

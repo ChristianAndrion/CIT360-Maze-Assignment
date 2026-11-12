@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class BaseTraversal : MonoBehaviour
@@ -6,7 +5,7 @@ public class BaseTraversal : MonoBehaviour
     public bool isRunning;
     public int distance;
 
-    protected GameObject robot;
+    [SerializeField] protected GameObject robot;
 
     public virtual void startTraversal()
     {
@@ -36,11 +35,6 @@ public class BaseTraversal : MonoBehaviour
     protected virtual bool traversalResult()
     {
         return false;
-    }
-
-    protected void moveRobot(Vector2 newLocation)
-    {
-        robot.gameObject.transform.position = newLocation;
     }
 
 }

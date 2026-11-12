@@ -1,8 +1,6 @@
-using UnityEngine;
-
-public class Stack : MonoBehaviour
+public class Stack 
 {
-    private Cell[] arr;
+    public Cell[] arr;
     private int top;
     private int capacity;
 
@@ -17,10 +15,11 @@ public class Stack : MonoBehaviour
     {
         if(isFull())
         {
-            Debug.Log("Capacity exceeded");
+            // Debug.Log("Capacity exceeded");
             return;
         }
-        arr[top++] = cell;
+        top++;
+        arr[top] = cell;
     }
 
     public Cell pop()

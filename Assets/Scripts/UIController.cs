@@ -6,16 +6,29 @@ public class UIController : MonoBehaviour
 {
     [SerializeField] private TMP_InputField widthEntry;
     [SerializeField] private TMP_InputField heightEntry;
+
     [SerializeField] private MazeGenerator mg;
+    [SerializeField] private GameObject robot;
 
-    public GameObject sideBar;
-    public GameObject bottomBar;
-    public GameObject startButton;
-    public GameObject generator;
+    [SerializeField] private GameObject sideBar;
 
+    public Toggle stackDFSToggle;
+    [SerializeField] private GameObject bottomBar;
+    [SerializeField] private GameObject startButton;
+    [SerializeField] private GameObject generator;
+
+    [SerializeField] private StackDFS stackDFS;
+    private bool stackDFSActive;
+
+    void Awake()
+    {
+        //Unity subscribing 
+        stackDFSToggle.onValueChanged.AddListener(OnStackDFSToggle);
+    }
 
     private void Start()
     {
+
         widthEntry.text = (mg.mazeWidth).ToString();
         heightEntry.text = (mg.mazeHeight).ToString();
 
@@ -54,6 +67,13 @@ public class UIController : MonoBehaviour
         bottomBar.SetActive(true);
         startButton.SetActive(false);
         generator.SetActive(false);
+
+        Debug.Log("Starting Traversal");
+        if(stackDFSActive == true)
+        {
+            Debug.Log("Starting Stack DFS traversal from UIController");
+            stackDFS.startTraversal();
+        }
     }
 
     public void Reset()
@@ -63,4 +83,11 @@ public class UIController : MonoBehaviour
         startButton.SetActive(true);
         generator.SetActive(true);
     }
+
+    public void OnStackDFSToggle(bool active)
+    {
+        Debug.Log("StackDFS set to: " + active);
+        stackDFSActive = active;
+    }
+
 }
