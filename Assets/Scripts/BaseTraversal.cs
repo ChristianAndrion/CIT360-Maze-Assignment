@@ -12,12 +12,12 @@ public class BaseTraversal : MonoBehaviour
         isRunning = true;
     }
 
-    public virtual bool traversalStep()
+    public virtual bool traversalStep()//Override this with the algorithm
     {
         return false;
     }
 
-    public virtual void incrementTraversal()
+    public virtual void incrementTraversal() //This is called by the increment button which effectively just calls traversal step once
     {
         
     }
