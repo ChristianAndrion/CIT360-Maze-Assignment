@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class BaseTraversal : MonoBehaviour
@@ -9,10 +11,15 @@ public class BaseTraversal : MonoBehaviour
     [SerializeField] protected GameObject robot;
 
     [SerializeField] private Button _incrementButton;
+    [SerializeField] private Button _completeButton;
+
+    private Coroutine _loopTraversalStep;
+    public float loopInterval;
 
     private void Start()
     {
         _incrementButton.onClick.AddListener(incrementTraversal);
+        _completeButton.onClick.AddListener(completeTraversal);
     }
 
     public virtual void startTraversal()
@@ -25,13 +32,38 @@ public class BaseTraversal : MonoBehaviour
         return false;
     }
 
-    public virtual void incrementTraversal() //This is called by the increment button which effectively just calls traversal step once
+    public void incrementTraversal() //Realized, can just do this instead of overriding it for every traversal
     {
-        
+        if(traversalStep())
+        {
+            Debug.Log("Incrementing " + gameObject.name + " Traversal");
+        }   
     }
 
     public virtual void completeTraversal()
     {
+        if(_loopTraversalStep != null)
+        {
+            StopCoroutine(nameof(RepeatTraversalStep));
+        }
+
+        _loopTraversalStep = StartCoroutine(RepeatTraversalStep(loopInterval));
+    }
+
+    private IEnumerator RepeatTraversalStep(float interval)
+    {
+        WaitForSeconds waitTime = new WaitForSeconds(interval);
+
+        Debug.Log("Traversing Maze...");
+
+        while(traversalStep())
+        {
+            
+            yield return waitTime;
+            
+        }
+
+        Debug.Log("Maze Traversal Finished");
 
     }
 

@@ -77,22 +77,14 @@ public class StackDFS : BaseTraversal
         return isRunning;
     }
 
-    public override void incrementTraversal()
-    {
-        if(traversalStep())
-        {
-            Debug.Log("Incrementing Stack DFS Traversal");
-        }
-    }
-
-    public override void completeTraversal()
-    {
-        while (traversalStep())
-        {
-            Debug.Log("Traversing Maze");
-        }
-        Debug.Log("Maze Traversal Finished");
-    }
+    // public override void completeTraversal()
+    // {
+    //     while (traversalStep())
+    //     {
+    //         Debug.Log("Traversing Maze");
+    //     }
+    //     Debug.Log("Maze Traversal Finished");
+    // }
 
     
 
