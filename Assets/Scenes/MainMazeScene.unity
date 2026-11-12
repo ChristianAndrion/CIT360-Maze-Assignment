@@ -194,6 +194,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 16803997}
   m_CullTransparentMesh: 1
+--- !u!1 &48130136
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 48130137}
+  - component: {fileID: 48130138}
+  m_Layer: 0
+  m_Name: StackDFS
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &48130137
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 48130136}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 167445273}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &48130138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 48130136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c8f7fdcb90e6b04ea5552992a9a5b56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StackDFS
+  isRunning: 0
+  distance: 0
+  robot: {fileID: 167445271}
+  _incrementButton: {fileID: 2084170163}
+  mg: {fileID: 2023481185}
 --- !u!1 &93874032
 GameObject:
   m_ObjectHideFlags: 0
@@ -611,7 +660,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: -5504641567688480610, guid: 00eea2dc8fcfa9542ac1eb55e89419b1, type: 3}
   m_Color: {r: 0.47358483, g: 0.58274144, b: 1, a: 1}
@@ -635,7 +684,8 @@ Transform:
   m_LocalPosition: {x: -0.39486, y: -0.35892, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 48130137}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &189546916
@@ -1169,7 +1219,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!1 &505621463
 GameObject:
   m_ObjectHideFlags: 0
@@ -3777,10 +3827,13 @@ MonoBehaviour:
   widthEntry: {fileID: 1286184864}
   heightEntry: {fileID: 2005604568}
   mg: {fileID: 2023481185}
+  robot: {fileID: 167445271}
   sideBar: {fileID: 670153374}
+  stackDFSToggle: {fileID: 324996495}
   bottomBar: {fileID: 1920252001}
   startButton: {fileID: 1609010487}
   generator: {fileID: 886754874}
+  stackDFS: {fileID: 48130138}
 --- !u!1 &1798830783
 GameObject:
   m_ObjectHideFlags: 0
@@ -4539,6 +4592,10 @@ MonoBehaviour:
   MainCamera: {fileID: 1547106752}
   robot: {fileID: 167445271}
   cellSize: 1
+  mazeWidth: 10
+  mazeHeight: 10
+  startLocation: {x: 0, y: 0}
+  endLocation: {x: 0, y: 0}
 --- !u!4 &2023481186
 Transform:
   m_ObjectHideFlags: 0

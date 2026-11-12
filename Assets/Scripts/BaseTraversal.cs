@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BaseTraversal : MonoBehaviour
 {
@@ -6,6 +7,13 @@ public class BaseTraversal : MonoBehaviour
     public int distance;
 
     [SerializeField] protected GameObject robot;
+
+    [SerializeField] private Button _incrementButton;
+
+    private void Start()
+    {
+        _incrementButton.onClick.AddListener(incrementTraversal);
+    }
 
     public virtual void startTraversal()
     {

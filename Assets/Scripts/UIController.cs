@@ -68,10 +68,10 @@ public class UIController : MonoBehaviour
         startButton.SetActive(false);
         generator.SetActive(false);
 
-        Debug.Log("Starting Traversal");
+        Debug.Log("Starting...");
         if(stackDFSActive == true)
         {
-            Debug.Log("Starting Stack DFS traversal from UIController");
+            Debug.Log("Stack DFS traversal from UIController");
             stackDFS.startTraversal();
         }
     }

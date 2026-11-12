@@ -23,14 +23,14 @@ public class StackDFS : BaseTraversal
         {
             
             Cell curr = stack.pop();
-            // Debug.Log("Popping stack: " + curr);
-            // mg.UpdateRobotPosition(curr.row,curr.column);
+            Debug.Log("Popping stack: " + curr);
             curr.visited = true;
 
             if(curr == mg.getLocation((int)mg.endLocation.x,(int)mg.endLocation.y))
             {
                 isRunning = false;
                 backtrack();
+                Debug.Log("Exit found!");
                 return isRunning;
             }
 
@@ -72,6 +72,7 @@ public class StackDFS : BaseTraversal
             return isRunning;
         }
         //Unsolvable
+        Debug.Log("Unable to find exit :(");
         isRunning = false;
         return isRunning;
     }
