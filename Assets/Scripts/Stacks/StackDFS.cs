@@ -23,8 +23,8 @@ public class StackDFS : BaseTraversal
         {
             
             Cell curr = stack.pop();
-            Debug.Log("Popping stack: " + curr);
-            mg.UpdateRobotPosition(curr.row,curr.column);
+            // Debug.Log("Popping stack: " + curr);
+            // mg.UpdateRobotPosition(curr.row,curr.column);
             curr.visited = true;
 
             if(curr == mg.getLocation((int)mg.endLocation.x,(int)mg.endLocation.y))

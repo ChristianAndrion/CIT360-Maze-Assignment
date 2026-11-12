@@ -6,6 +6,8 @@ public class Cell : MonoBehaviour
     [SerializeField] private GameObject startSprite;
     [SerializeField] private GameObject endSprite;
     [SerializeField] private GameObject wallSprite;
+    [SerializeField] private GameObject visitedSprite;
+    [SerializeField] private GameObject pathSprite;
 
     private SpriteRenderer spriteRenderer;
 
@@ -13,7 +15,20 @@ public class Cell : MonoBehaviour
     public int column;
 
     public bool isWall;
-    public bool visited;
+
+    [SerializeField] private bool _visited;
+    public bool visited
+    {
+        get => _visited;
+        set
+        {
+            if(_visited != value)
+            {
+                _visited = value;
+                UpdateSprite();
+            }
+        }
+    }
 
     public bool isStart;
     public bool isEnd;
@@ -38,5 +53,10 @@ public class Cell : MonoBehaviour
         {
             endSprite.SetActive(true);
         }
+    }
+
+    private void UpdateSprite()
+    {
+        visitedSprite.SetActive(visited);
     }
 }
