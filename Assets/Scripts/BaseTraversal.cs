@@ -9,6 +9,7 @@ public class BaseTraversal : MonoBehaviour
     public int distance;
 
     [SerializeField] protected GameObject robot;
+    private RobotController rc;
 
     [SerializeField] private Button _incrementButton;
     [SerializeField] private Button _completeButton;
@@ -20,10 +21,12 @@ public class BaseTraversal : MonoBehaviour
     {
         _incrementButton.onClick.AddListener(incrementTraversal);
         _completeButton.onClick.AddListener(completeTraversal);
+        rc = robot.GetComponent<RobotController>();
     }
 
     public virtual void startTraversal()
     {
+        rc.UpdateRobotText("Starting Traversal with " + gameObject.name);
         isRunning = true;
     }
 

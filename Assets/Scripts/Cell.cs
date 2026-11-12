@@ -32,7 +32,6 @@ public class Cell : MonoBehaviour
 
     public bool isStart;
     public bool isEnd;
-
     public int distance;
 
 
@@ -58,5 +57,11 @@ public class Cell : MonoBehaviour
     private void UpdateSprite()
     {
         visitedSprite.SetActive(visited);
+    }
+
+    public void Reset()
+    {
+        visited = false;
+        distance = 0;
     }
 }

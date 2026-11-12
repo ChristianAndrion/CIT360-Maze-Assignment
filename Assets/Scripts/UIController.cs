@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
@@ -92,6 +93,8 @@ public class UIController : MonoBehaviour
         generator.SetActive(true);
         completeButton.SetActive(true);
         incrementButton.SetActive(true);
+
+        mg.ResetMaze();
     }
 
     private void OnCompleteClicked()

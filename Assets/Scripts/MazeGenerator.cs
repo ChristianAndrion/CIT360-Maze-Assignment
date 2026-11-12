@@ -162,5 +162,16 @@ public class MazeGenerator : MonoBehaviour
     {
         robot.transform.position = mazeGrid[x, y].transform.position;
     }
+
+    public void ResetMaze()
+    {
+        for (int x = 0; x <= mazeWidth; x++)
+        {
+            for(int y = 0; y <=  mazeHeight; y++)
+            {
+                mazeGrid[x,y].Reset();   
+            }
+        }
+    }
 }
 

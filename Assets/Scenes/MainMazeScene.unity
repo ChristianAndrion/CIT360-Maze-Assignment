@@ -243,7 +243,7 @@ MonoBehaviour:
   robot: {fileID: 167445271}
   _incrementButton: {fileID: 2084170163}
   _completeButton: {fileID: 2025381034}
-  loopInterval: 0.5
+  loopInterval: 0.1
   mg: {fileID: 2023481185}
 --- !u!1 &93874032
 GameObject:
@@ -704,6 +704,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9c2be11d3f4891498cc074cf2b09b0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RobotController
+  robotTextBox: {fileID: 1464538102}
 --- !u!1 &189546916
 GameObject:
   m_ObjectHideFlags: 0
