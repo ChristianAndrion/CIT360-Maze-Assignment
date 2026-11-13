@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class Cell : MonoBehaviour
@@ -9,6 +10,7 @@ public class Cell : MonoBehaviour
     [SerializeField] private GameObject visitedSprite;
     [SerializeField] private GameObject pathSprite;
 
+    [SerializeField] private TextMeshProUGUI distanceText;
     private SpriteRenderer spriteRenderer;
 
     public int row;
@@ -57,6 +59,7 @@ public class Cell : MonoBehaviour
     private void UpdateSprite()
     {
         visitedSprite.SetActive(visited);
+        distanceText.text = distance.ToString();
     }
 
     public void Reset()

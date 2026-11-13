@@ -9,13 +9,14 @@ public class BaseTraversal : MonoBehaviour
     public int distance;
 
     [SerializeField] protected GameObject robot;
-    private RobotController rc;
+    protected RobotController rc;
 
     [SerializeField] private Button _incrementButton;
     [SerializeField] private Button _completeButton;
 
     private Coroutine _loopTraversalStep;
     public float loopInterval;
+
 
     private void Start()
     {

@@ -43,6 +43,7 @@ public class UIController : MonoBehaviour
 
         bottomBar.SetActive(false);
         
+        stackDFSActive = true;
     }
 
     public void OnGenerateNewMazeClicked()

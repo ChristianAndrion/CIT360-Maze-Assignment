@@ -24,6 +24,7 @@ public class StackDFS : BaseTraversal
             
             Cell curr = stack.pop();
             Debug.Log("Popping stack: " + curr);
+            rc.UpdateRobotText("Processing: " + curr.name);
             curr.visited = true;
 
             if(curr == mg.getLocation((int)mg.endLocation.x,(int)mg.endLocation.y))
@@ -77,15 +78,10 @@ public class StackDFS : BaseTraversal
         return isRunning;
     }
 
-    // public override void completeTraversal()
-    // {
-    //     while (traversalStep())
-    //     {
-    //         Debug.Log("Traversing Maze");
-    //     }
-    //     Debug.Log("Maze Traversal Finished");
-    // }
+    public override void backtrack()
+    {
 
+    }
     
 
 }
