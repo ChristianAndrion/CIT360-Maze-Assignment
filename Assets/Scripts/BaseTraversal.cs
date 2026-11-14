@@ -33,15 +33,16 @@ public class BaseTraversal : MonoBehaviour
         distance = 0;
     }
 
-    public virtual bool traversalStep()//Override this with the algorithm
+    public virtual void traversalStep()//Override this with the algorithm
     {
-        return false;
+        
     }
 
     public void incrementTraversal() //Realized, can just do this instead of overriding it for every traversal
     {
-        if(traversalStep())
+        if(isRunning)
         {
+            traversalStep();
             Debug.Log("Incrementing " + gameObject.name + " Traversal");
         }   
     }
@@ -63,11 +64,10 @@ public class BaseTraversal : MonoBehaviour
         Debug.Log("Traversing Maze...");
         rc.UpdateRobotText("Processing Maze...");
 
-        while(traversalStep())
+        while(isRunning)
         {
-            
+            traversalStep();
             yield return waitTime;
-            
         }
 
         Debug.Log("Maze Traversal Finished");

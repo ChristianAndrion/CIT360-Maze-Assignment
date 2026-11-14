@@ -165,11 +165,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StackDFS
   isRunning: 0
   distance: 0
+  mg: {fileID: 2023481185}
   robot: {fileID: 167445271}
   _incrementButton: {fileID: 2084170163}
   _completeButton: {fileID: 2025381034}
   loopInterval: 0.1
-  mg: {fileID: 2023481185}
 --- !u!1 &93874032
 GameObject:
   m_ObjectHideFlags: 0

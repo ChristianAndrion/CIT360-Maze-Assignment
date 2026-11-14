@@ -15,7 +15,7 @@ public class StackDFS : BaseTraversal
         stack.push(mg.getLocation((int)mg.startLocation.x,(int)mg.startLocation.y));
     }
 
-    public override bool traversalStep()
+    public override void traversalStep()
     {
 
         if(!stack.isEmpty())
@@ -32,7 +32,6 @@ public class StackDFS : BaseTraversal
                 isRunning = false;
                 rc.UpdateRobotText("Exit found!");
                 backtrack(curr);
-                return isRunning;
             }
 
             distance++;
@@ -72,14 +71,12 @@ public class StackDFS : BaseTraversal
                 west.distance = distance;
                 stack.push(west);
             }
-
-
-            return isRunning;
+            return;
         }
         //Unsolvable
         rc.UpdateRobotText("Unable to find exit :(");
         isRunning = false;
-        return isRunning;
+
     }
 
 }
