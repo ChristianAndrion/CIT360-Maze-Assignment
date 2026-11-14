@@ -4,7 +4,6 @@ using UnityEngine.Rendering;
 public class StackDFS : BaseTraversal
 {
     private Stack stack;
-    [SerializeField] private MazeGenerator mg;
 
     public override void startTraversal()
     {
@@ -25,13 +24,14 @@ public class StackDFS : BaseTraversal
             Cell curr = stack.pop();
             Debug.Log("Popping stack: " + curr);
             rc.UpdateRobotText("Processing: " + curr.name);
-            curr.visited = true;
+            curr.processed = true;
+            curr.distance = distance;
 
             if(curr == mg.getLocation((int)mg.endLocation.x,(int)mg.endLocation.y))
             {
                 isRunning = false;
-                backtrack();
-                Debug.Log("Exit found!");
+                rc.UpdateRobotText("Exit found!");
+                backtrack(curr);
                 return isRunning;
             }
 
@@ -39,49 +39,47 @@ public class StackDFS : BaseTraversal
 
             Cell north = mg.getLocation(curr.row, curr.column + 1);
 
-            if(!north.isWall && !north.visited)
+            if(!north.isWall && !north.processed)
             {
-                stack.push(north);
+                north.visited = true;
                 north.distance = distance;
+                stack.push(north);
             }
 
             Cell east = mg.getLocation(curr.row + 1, curr.column);
 
-            if(!east.isWall && !east.visited)
+            if(!east.isWall && !east.processed)
             {
-                stack.push(east);
+                east.visited = true;
                 east.distance = distance;
+                stack.push(east);
             }
 
             Cell south = mg.getLocation(curr.row, curr.column - 1);
 
-            if(!south.isWall && !south.visited)
+            if(!south.isWall && !south.processed)
             {
-                stack.push(south);
+                south.visited = true;
                 south.distance = distance;
+                stack.push(south);
             }
 
             Cell west = mg.getLocation(curr.row - 1,curr.column);
 
-            if(!west.isWall && !west.visited)
+            if(!west.isWall && !west.processed)
             {
-                stack.push(west);
+                west.visited = true;
                 west.distance = distance;
+                stack.push(west);
             }
 
 
             return isRunning;
         }
         //Unsolvable
-        Debug.Log("Unable to find exit :(");
+        rc.UpdateRobotText("Unable to find exit :(");
         isRunning = false;
         return isRunning;
     }
-
-    public override void backtrack()
-    {
-
-    }
-    
 
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -7,7 +8,7 @@ public class BaseTraversal : MonoBehaviour
 {
     public bool isRunning;
     public int distance;
-
+    [SerializeField] protected MazeGenerator mg;
     [SerializeField] protected GameObject robot;
     protected RobotController rc;
 
@@ -29,6 +30,7 @@ public class BaseTraversal : MonoBehaviour
     {
         rc.UpdateRobotText("Starting Traversal with " + gameObject.name);
         isRunning = true;
+        distance = 0;
     }
 
     public virtual bool traversalStep()//Override this with the algorithm
@@ -59,6 +61,7 @@ public class BaseTraversal : MonoBehaviour
         WaitForSeconds waitTime = new WaitForSeconds(interval);
 
         Debug.Log("Traversing Maze...");
+        rc.UpdateRobotText("Processing Maze...");
 
         while(traversalStep())
         {
@@ -71,9 +74,35 @@ public class BaseTraversal : MonoBehaviour
 
     }
 
-    public virtual void backtrack()
+    public virtual void backtrack(Cell endLocation)
     {
+        Cell curr = endLocation;
 
+        while(curr.distance > 0)
+        {
+
+            Cell north = mg.getLocation(curr.row, curr.column + 1);
+            Cell east = mg.getLocation(curr.row + 1, curr.column);
+            Cell south = mg.getLocation(curr.row, curr.column - 1);
+            Cell west = mg.getLocation(curr.row - 1,curr.column);
+
+            Cell[] neighbourCells = { north, east, south, west };
+            
+            int num = neighbourCells.Length;
+
+            Cell smallestDistanceCell = null;
+            int testDist = int.MaxValue;
+            for (int i = 0; i < num; i++)
+            {
+                if (neighbourCells[i].processed && neighbourCells[i].distance < testDist)
+                {
+                    testDist = neighbourCells[i].distance;
+                    smallestDistanceCell = neighbourCells[i];
+                }
+            }
+            curr = smallestDistanceCell;
+            curr.isPath = true;
+        }
     }
 
     protected virtual bool traversalResult()
