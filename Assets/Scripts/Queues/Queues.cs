@@ -14,7 +14,6 @@ public class Queues
 
     public void Enqueue(Cell obj){
         if(isFull()){
-            Debug.Log("Capacity Reached");
             return;
         }
 
@@ -26,7 +25,6 @@ public class Queues
 
     public Cell Dequeue(){
         if(isEmpty()){
-            Debug.Log("nothing to dequeue");
             return null;
         }
 
