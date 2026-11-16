@@ -614,6 +614,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 48130137}
+  - {fileID: 1788792687}
   - {fileID: 783868401}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3635,10 +3636,63 @@ MonoBehaviour:
   bottomBar: {fileID: 1920252001}
   generator: {fileID: 886754874}
   stackDFSToggle: {fileID: 324996495}
+  queueBFSToggle: {fileID: 1092133426}
   startButton: {fileID: 1609010487}
   completeButton: {fileID: 2025381032}
   incrementButton: {fileID: 2084170161}
   stackDFS: {fileID: 48130138}
+  queueBFS: {fileID: 1788792688}
+--- !u!1 &1788792686
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1788792687}
+  - component: {fileID: 1788792688}
+  m_Layer: 0
+  m_Name: QueueBFS
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1788792687
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1788792686}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 167445273}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1788792688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1788792686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea0f7c25faf8949c3bed6a3243cb6778, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::QueueBFS
+  isRunning: 0
+  distance: 0
+  mg: {fileID: 2023481185}
+  robot: {fileID: 167445271}
+  _incrementButton: {fileID: 2084170163}
+  _completeButton: {fileID: 2025381034}
+  loopInterval: 0.1
 --- !u!1 &1876884079
 GameObject:
   m_ObjectHideFlags: 0

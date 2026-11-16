@@ -18,6 +18,8 @@ public class UIController : MonoBehaviour
 
     [Header("Traversal Toggles")]
     public Toggle stackDFSToggle;
+    public Toggle queueBFSToggle;
+
 
     [Header("Buttons")]
     [SerializeField] private GameObject startButton;
@@ -26,7 +28,11 @@ public class UIController : MonoBehaviour
 
     [Header("Traversal Objects")]
     [SerializeField] private StackDFS stackDFS;
+    [SerializeField] private QueueBFS queueBFS;
+
     private bool stackDFSActive;
+    private bool queueBFSActive;
+
 
     void Awake()
     {
@@ -83,6 +89,13 @@ public class UIController : MonoBehaviour
         {
             Debug.Log("Stack DFS traversal from UIController");
             stackDFS.startTraversal();
+        }
+
+        if(queueBFSActive == true)
+        {
+            Debug.Log("Queue BFS traversal from UIController");
+            queueBFS.startTraversal();
+
         }
     }
 

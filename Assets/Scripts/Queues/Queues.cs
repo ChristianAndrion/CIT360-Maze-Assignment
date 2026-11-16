@@ -1,6 +1,4 @@
-using UnityEngine;
-
-public class Queues : MonoBehaviour
+public class Queues
 {
 
     public Cell[] queue;
@@ -21,6 +19,7 @@ public class Queues : MonoBehaviour
         }
 
         int avail = (front + size) % queue.Length;
+        queue[avail] = obj;
         size++;
 
     }
@@ -57,15 +56,4 @@ public class Queues : MonoBehaviour
         return size == queue.Length;
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
