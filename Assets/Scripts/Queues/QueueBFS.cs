@@ -40,7 +40,7 @@ public class QueueBFS : BaseTraversal
             
 
             Cell north = mg.getLocation(curr.row, curr.column + 1);
-            if(!north.isWall && !north.visited)
+            if(!north.isWall && !north.processed)
             {
                 north.visited = true;
                 north.distance = curr.distance + 1;
@@ -48,7 +48,7 @@ public class QueueBFS : BaseTraversal
             }
 
             Cell east = mg.getLocation(curr.row + 1, curr.column);
-            if(!east.isWall && !east.visited)
+            if(!east.isWall && !east.processed)
             {
                 east.visited = true;
                 east.distance = curr.distance + 1;
@@ -56,7 +56,7 @@ public class QueueBFS : BaseTraversal
             }
 
             Cell south = mg.getLocation(curr.row, curr.column - 1);
-            if(!south.isWall && !south.visited)
+            if(!south.isWall && !south.processed)
             {
                 south.visited = true;
                 south.distance = curr.distance + 1;
@@ -64,7 +64,7 @@ public class QueueBFS : BaseTraversal
             }
 
             Cell west = mg.getLocation(curr.row - 1, curr.column);
-            if(!west.isWall && !west.visited)
+            if(!west.isWall && !west.processed)
             {
                 west.visited = true;
                 west.distance = curr.distance + 1;
