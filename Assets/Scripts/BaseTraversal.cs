@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class BaseTraversal : MonoBehaviour
 {
+
+    public static event Action OnComplete;
+
     public bool isRunning;
     public int distance;
     [SerializeField] protected MazeGenerator mg;
@@ -103,6 +106,7 @@ public class BaseTraversal : MonoBehaviour
             curr = smallestDistanceCell;
             curr.isPath = true;
         }
+        OnComplete?.Invoke();
     }
 
     protected virtual bool traversalResult()

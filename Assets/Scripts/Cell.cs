@@ -77,6 +77,31 @@ public class Cell : MonoBehaviour
 
     private void Start()
     {
+        UpdateSprite();
+    }
+
+    private void UpdateSprite()
+    {
+        visitedSprite.SetActive(visited);
+        processedSprite.SetActive(processed);
+        pathSprite.SetActive(isPath);
+
+        
+        if (isStart)
+        {
+            startSprite.SetActive(true);
+            distanceText.text = "";
+
+            return;
+        }
+        else if (isEnd)
+        {
+            endSprite.SetActive(true);
+            distanceText.text = "";
+
+            return;
+        }
+        
         if (isWall)
         {
             //Randomize Rock sprite 
@@ -85,23 +110,6 @@ public class Cell : MonoBehaviour
             wallSprite.SetActive(true);
             distanceText.text = "";
         }
-        if (isStart)
-        {
-            startSprite.SetActive(true);
-            distanceText.text = "";
-        }
-        if (isEnd)
-        {
-            endSprite.SetActive(true);
-            distanceText.text = "";
-        }
-    }
-
-    private void UpdateSprite()
-    {
-        visitedSprite.SetActive(visited);
-        processedSprite.SetActive(processed);
-        pathSprite.SetActive(isPath);
     }
 
     private void UpdateDistance()
@@ -117,4 +125,5 @@ public class Cell : MonoBehaviour
         distance = 0;
         
     }
+
 }

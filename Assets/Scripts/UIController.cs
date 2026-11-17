@@ -33,6 +33,17 @@ public class UIController : MonoBehaviour
     private bool stackDFSActive;
     private bool queueBFSActive;
 
+    private void OnEnable()
+    {
+        BaseTraversal.OnComplete += ShowBottomBar;
+    }
+
+
+    private void OnDisable()
+    {
+        BaseTraversal.OnComplete -= ShowBottomBar;
+    }
+
 
     void Awake()
     {
@@ -116,8 +127,14 @@ public class UIController : MonoBehaviour
 
     private void OnCompleteClicked()
     {
+        bottomBar.SetActive(false);
+    }
+
+    private void ShowBottomBar()
+    {
         completeButton.SetActive(false);
         incrementButton.SetActive(false);
+        bottomBar.SetActive(true);
     }
 
     public void OnStackDFSToggle(bool active)

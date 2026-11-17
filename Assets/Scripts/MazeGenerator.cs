@@ -114,26 +114,13 @@ public class MazeGenerator : MonoBehaviour
 
     private void ChooseRandomStartAndFinish(int Width, int Height)
     {
-        bool validStart = false;
+        int randStartX = Random.Range(1, Width);
+        int randStartY = Random.Range(1, Height);
 
-        while (!validStart)
-        {
-            int randStartX = Random.Range(1, Width);
-            int randStartY = Random.Range(1, Height);
-
-            if (mazeGrid[randStartX, randStartY].isWall)
-            {
-                validStart = false;
-            }
-            else
-            { 
-                mazeGrid[randStartX,randStartY].isStart = true;
-                startLocation = new Vector2(randStartX, randStartY);
-                UpdateRobotPosition(randStartX,randStartY);
-                validStart = true;
-            }
-        }
-
+        mazeGrid[randStartX,randStartY].isStart = true;
+        startLocation = new Vector2(randStartX, randStartY);
+        UpdateRobotPosition(randStartX,randStartY);
+        
         bool validEnd = false;
         while (!validEnd)
         {
