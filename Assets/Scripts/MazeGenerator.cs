@@ -127,7 +127,7 @@ public class MazeGenerator : MonoBehaviour
             int randEndX = Random.Range(1, Width);
             int randEndY = Random.Range(1, Height);
 
-            if (mazeGrid[randEndX, randEndY].isWall || mazeGrid[randEndX,randEndY].isStart)
+            if (mazeGrid[randEndX,randEndY].isStart)
             {
                 validEnd = false;
             }
