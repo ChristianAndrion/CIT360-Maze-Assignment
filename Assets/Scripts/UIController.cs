@@ -38,7 +38,10 @@ public class UIController : MonoBehaviour
     {
         //Unity subscribing 
         stackDFSToggle.onValueChanged.AddListener(OnStackDFSToggle);
+        queueBFSToggle.onValueChanged.AddListener(OnQueueBFSToggle);
+
         completeButton.GetComponent<Button>().onClick.AddListener(OnCompleteClicked);
+
     }
 
     private void Start()
@@ -122,5 +125,12 @@ public class UIController : MonoBehaviour
         Debug.Log("StackDFS set to: " + active);
         stackDFSActive = active;
     }
+
+    public void OnQueueBFSToggle(bool active)
+    {
+        Debug.Log("QueueBFS set to: " + active);
+        queueBFSActive = active;
+    }
+
 
 }
