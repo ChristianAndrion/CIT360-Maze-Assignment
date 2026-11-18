@@ -91,18 +91,18 @@ public class Cell : MonoBehaviour
         {
             startSprite.SetActive(true);
             distanceText.text = "";
-
+            isWall = false;
             return;
         }
-        else if (isEnd)
+        if (isEnd)
         {
             endSprite.SetActive(true);
             distanceText.text = "";
-
+            isWall = false;
             return;
         }
         
-        if (isWall)
+        if (isWall && (!isStart || !isEnd))
         {
             //Randomize Rock sprite 
             int randomRock = Random.Range(0, 2);
